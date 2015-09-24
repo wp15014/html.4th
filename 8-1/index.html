@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>森の工房 [Fores"t Studio] - お問い合わせ</title>
+<title>森の工房 [Fores"t Studio] - 川の中の風景</title>
 <meta name="viewport" content="width=device-width">
 <!-- chap4-3フォントの指定,  -->
 <link href='https://fonts.googleapis.com/css?family=Righteous' rel='stylesheet' type='text/css'>
@@ -199,7 +199,7 @@ small::before    {
 	width: 200px;
 	padding: 10px 0;
 	background-color: #880000;
-	color: #ffffff; 
+	color: #ffffff;
 	font-family: 'Righteous', cursive;
 	font-size: 16px;
 	text-align: center;
@@ -241,45 +241,10 @@ article section:nth-of-type(odd)  figcaption    {
 	text-align: right;
 }
 
-/* フォーム */
-form    {
-	max-width: 500px;
-	margin: 30px auto;
-}
-
-input, textarea    {
-	width: 100%;
-	box-sizing: border-box;
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	border:solid 1px #aaaaaa;
-	border-radius: 0;
-	-webkit-appearance:none;
-}
-
-textarea    {
-	height: 110px;
-}
-
-/* 送信ボタンの横幅設定 */
-input[type="submit"]    {
-	width: 200px;
-	background-color: #cef178;
-}
-
-/* chap7-5注意マーク表示 */
-input:required, input:invalid    {
-	background-image: url(caution.png);
-	background-repeat: no-repeat;
-	background-position: right center;
-}
-
-input:valid    {
-	background-image: none;
-}
-
-label span    {
-	color: #ff0000;
+/* ビデオ */
+article    {
+	text-align: center;
+	margin: 30px 0 100px;
 }
 
 
@@ -356,6 +321,13 @@ nav ul    {
 nav ul li a    {
 	width: 100px;
 }
+
+/* 画面の最適化 */
+video    {
+	width:480px;
+	height: 270px;
+}
+
 }
 /*↑の}は @media~の閉じカッコ*/
 /* =================タブレット用の設定 終わり=============== */
@@ -417,6 +389,12 @@ article section:nth-of-type(1n) figure    {
 article section:nth-of-type(1n) figcaption    {
 	text-align: center;
 	margin-bottom: 15px;
+}
+
+/* 画面の最適化 */
+video    {
+	width:280px;
+	height: 157px;
 }
 }
 /* =================スマートフォン用の設定 終わり=============== */
@@ -521,15 +499,30 @@ article section figure    {
 </style>
 <![endif]-->
 
+<script>
+	function myimage()    {
+		var canvas = document.getElementById('circle');
+		if(canvas.getContext)    {
+		var ctx = canvas.getContext('2d');
+
+		ctx.arc(14, 14, 14, 0, Math.PI*2, true);
+		ctx.fillStyle="#" + Math.floor(Math.random()*256*256*256).toString(16);
+		ctx.fill();
+		}
+	}
+</script>
+
 </head>
-<body>
+<body onload="myimage();">
 
 <!-- コンテナ -->
 <div id="container">
 
 <!-- ヘッダー  chap7-2-->
 <header id="pageheader">
-	<h1>Green Leaf</h1>
+	<h1>
+	<canvas id="circle" width="28" height="28"></canvas>
+	Green Leaf</h1>
 	<p>生活を楽しくする情報をもっと身近にお届けします</p>
 
 	<!-- メニュー chap7-2-->
@@ -542,47 +535,21 @@ article section figure    {
 		<li><a href="http://blog.xxx.xxx/">ブログ</a></li>
 		</ul>
 	</nav>
-
-	<!-- header画像の追加 -->
-	<img src="header.jpg" alt="">
 </header>
 
 <!-- コンテンツ chap7-2, -->
 <article>
-	<header>
-		<h1>お問い合わせ</h1>
-		
-		<p id="summary">ご意見、ご感想などがありましたら、以下の欄にご記入の上、送信してください。また、森の工房やイベントに関するご質問などもお気軽にお寄せください。<br />
-		（※送信後はトップページに戻ります。）</p>
-	</header>
-	
-	<form action="https://www.rescuesolutions.net/form/mail.cgi" method="POST">
-	<input type="hidden" name="_uid" value="XXXXXXXX" />
-	<input type="hidden" name="_done" value="http://www.www.www/" />
-	<input type="hidden" name="_subject" value="FORM MAIL" />
+	<h1>川の中の風景</h1>
 
-<!-- chap7-2ラベルと入力フィールドの関係明示, 7-4必須項目 -->
-	<p><label>名前<span>（必須）</span>：<br>
-		<input type="text" name="namae" size="40" required placeholder="名前を入力してください" autofocus></label>
-	</p>
-	
-	<p><label>メールアドレス<span>（必須）</span>：<br>
-	<input type="email" name="mail" size="40" required placeholder="メールアドレスを入力してください"></label>
-	</p>
+	<video width="640" height="360" controls poster="video.jpg">
+	<source src="sample.mp4" type="video/mp4">
+	<source src="sample.webm" type="video/webm">
 
-	<p><label>URL:<br>
-	<input type="url" name="url" size="40"  placeholder="ホームページのアドレスを入力してください"></label>
-	</p>
-	
-	<p><label>コメント：<br>
-	<textarea name="comment" cols="50" rows="8" placeholder="コメントなどを入力してください"></textarea></label>
-	</p>
-	
-	<p id="button">
-	<input type="submit" value="送信" />
-	</p>
-	
-	</form>
+	<!-- chap8-1未対応ブラウザに表示する内容の指定 -->
+	<p>川の中の風景を撮影した動画です<br>
+	<a href="sample.mp4">sample.mp4</a></p>
+	</video>
+
 </article>
 
 <!-- フッター -->
