@@ -499,19 +499,6 @@ article section figure    {
 </style>
 <![endif]-->
 
-<script>
-	function myimage()    {
-		var canvas = document.getElementById('circle');
-		if(canvas.getContext)    {
-		var ctx = canvas.getContext('2d');
-
-		ctx.arc(14, 14, 14, 0, Math.PI*2, true);
-		ctx.fillStyle="#" + Math.floor(Math.random()*256*256*256).toString(16);
-		ctx.fill();
-		}
-	}
-</script>
-
 </head>
 <body onload="myimage();">
 
@@ -520,9 +507,7 @@ article section figure    {
 
 <!-- ヘッダー  chap7-2-->
 <header id="pageheader">
-	<h1>
-	<canvas id="circle" width="28" height="28"></canvas>
-	Green Leaf</h1>
+	<h1>	Green Leaf</h1>
 	<p>生活を楽しくする情報をもっと身近にお届けします</p>
 
 	<!-- メニュー chap7-2-->
